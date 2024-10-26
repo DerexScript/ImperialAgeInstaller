@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.IO.Compression;
+using System.Windows.Forms;
 
 namespace ImperialAgeInstaller
 {
@@ -39,7 +40,7 @@ namespace ImperialAgeInstaller
             {
                 // if (control != progressBar1)
                 control.Visible = false;
-                
+
             }
         }
 
@@ -88,7 +89,7 @@ namespace ImperialAgeInstaller
             // string zipUrl = "https://drive.google.com/uc?export=download&id=1xorUs-cu918kfx1Lg15b-YTh6eOVgeqe";
             string downloadDirectory = label2.Text;
             string zipFilePath = Path.Combine(downloadDirectory, "ImperialAge.zip");
-            // Verifica se o diretório existe, se não, cria o diretório
+            // Verifica se o diretï¿½rio existe, se nï¿½o, cria o diretï¿½rio
             if (!Directory.Exists(downloadDirectory))
             {
                 Directory.CreateDirectory(downloadDirectory);
@@ -101,13 +102,13 @@ namespace ImperialAgeInstaller
                 label4.Text = "Extraindo...";
                 label4.Visible = true;
                 await Task.Delay(2000);
-                // Extrair o conteúdo do zip
+                // Extrair o conteï¿½do do zip
                 ExtractZipFile(zipFilePath, downloadDirectory);
 
                 // Excluir o arquivo zip
                 File.Delete(zipFilePath);
 
-                // MessageBox.Show("Download e instalação concluídos!");
+                // MessageBox.Show("Download e instalaï¿½ï¿½o concluï¿½dos!");
             }
             catch (Exception ex)
             {
@@ -125,8 +126,8 @@ namespace ImperialAgeInstaller
         private void button3_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show(
-                "Você tem certeza que deseja cancelar?",
-                "Confirmar saída",
+                "Vocï¿½ tem certeza que deseja cancelar?",
+                "Confirmar saï¿½da",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );
@@ -150,6 +151,12 @@ namespace ImperialAgeInstaller
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(new ProcessStartInfo("https://discord.gg/AsY7kv8H") { UseShellExecute = true });
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            this.pictureBox6.Parent = this.pictureBox1;
+            this.pictureBox6.BackColor = Color.Transparent;
         }
     }
 }
