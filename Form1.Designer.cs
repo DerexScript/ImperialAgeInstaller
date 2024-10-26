@@ -26,231 +26,230 @@
         ///  Required method for Designer support - do not modify
         ///  the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            label1 = new Label();
-            progressBar1 = new ProgressBar();
-            label3 = new Label();
-            label4 = new Label();
-            pictureBox1 = new PictureBox();
-            pictureBox4 = new PictureBox();
-            pictureBox5 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            textBox2 = new TextBox();
-            pictureBox6 = new PictureBox();
-            pictureBox7 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            SuspendLayout();
+            this.installDirectoryLabel=new Label();
+            this.progressBar=new ProgressBar();
+            this.installationCompleteNoticeLabel=new Label();
+            this.installationStatusLabel=new Label();
+            this.background=new PictureBox();
+            this.discordButton=new PictureBox();
+            this.websiteButton=new PictureBox();
+            this.closeButton=new PictureBox();
+            this.nextButton=new PictureBox();
+            this.installDirectoryTextBox=new TextBox();
+            this.changeDirectoryButton=new PictureBox();
+            this.playButton=new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)this.background).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.discordButton).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.websiteButton).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.closeButton).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.nextButton).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.changeDirectoryButton).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.playButton).BeginInit();
+            this.SuspendLayout();
             // 
-            // label1
+            // installDirectoryLabel
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("HoloLens MDL2 Assets", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.Transparent;
-            label1.Location = new Point(78, 151);
-            label1.Name = "label1";
-            label1.Size = new Size(226, 16);
-            label1.TabIndex = 0;
-            label1.Text = "Instalar Ultima Online Imperial Age em:";
-            label1.Click += label1_Click;
+            this.installDirectoryLabel.AutoSize=true;
+            this.installDirectoryLabel.BackColor=Color.Transparent;
+            this.installDirectoryLabel.Font=new Font("HoloLens MDL2 Assets", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            this.installDirectoryLabel.ForeColor=Color.Transparent;
+            this.installDirectoryLabel.Location=new Point(78, 151);
+            this.installDirectoryLabel.Name="installDirectoryLabel";
+            this.installDirectoryLabel.Size=new Size(226, 16);
+            this.installDirectoryLabel.TabIndex=0;
+            this.installDirectoryLabel.Text="Instalar Ultima Online Imperial Age em:";
             // 
-            // progressBar1
+            // progressBar
             // 
-            progressBar1.Location = new Point(78, 235);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(534, 23);
-            progressBar1.TabIndex = 5;
-            progressBar1.Visible = false;
+            this.progressBar.Location=new Point(78, 235);
+            this.progressBar.Name="progressBar";
+            this.progressBar.Size=new Size(534, 23);
+            this.progressBar.TabIndex=5;
+            this.progressBar.Visible=false;
             // 
-            // label3
+            // installationCompleteNoticeLabel
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("HoloLens MDL2 Assets", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.Transparent;
-            label3.Location = new Point(78, 235);
-            label3.Name = "label3";
-            label3.Size = new Size(200, 16);
-            label3.TabIndex = 6;
-            label3.Text = "Download e instalação concluídos!";
-            label3.Visible = false;
+            this.installationCompleteNoticeLabel.AutoSize=true;
+            this.installationCompleteNoticeLabel.BackColor=Color.Transparent;
+            this.installationCompleteNoticeLabel.Font=new Font("HoloLens MDL2 Assets", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            this.installationCompleteNoticeLabel.ForeColor=Color.Transparent;
+            this.installationCompleteNoticeLabel.Location=new Point(78, 235);
+            this.installationCompleteNoticeLabel.Name="installationCompleteNoticeLabel";
+            this.installationCompleteNoticeLabel.Size=new Size(200, 16);
+            this.installationCompleteNoticeLabel.TabIndex=6;
+            this.installationCompleteNoticeLabel.Text="Download e instalação concluídos!";
+            this.installationCompleteNoticeLabel.Visible=false;
             // 
-            // label4
+            // installationStatusLabel
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.Font = new Font("HoloLens MDL2 Assets", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.Transparent;
-            label4.Location = new Point(78, 261);
-            label4.Name = "label4";
-            label4.Size = new Size(68, 16);
-            label4.TabIndex = 9;
-            label4.Text = "Baixando...";
-            label4.Visible = false;
+            this.installationStatusLabel.AutoSize=true;
+            this.installationStatusLabel.BackColor=Color.Transparent;
+            this.installationStatusLabel.Font=new Font("HoloLens MDL2 Assets", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            this.installationStatusLabel.ForeColor=Color.Transparent;
+            this.installationStatusLabel.Location=new Point(78, 261);
+            this.installationStatusLabel.Name="installationStatusLabel";
+            this.installationStatusLabel.Size=new Size(68, 16);
+            this.installationStatusLabel.TabIndex=9;
+            this.installationStatusLabel.Text="Baixando...";
+            this.installationStatusLabel.Visible=false;
             // 
-            // pictureBox1
+            // background
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-4, -3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(711, 489);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 10;
-            pictureBox1.TabStop = false;
+            this.background.Image=(Image)resources.GetObject("background.Image");
+            this.background.Location=new Point(-4, -3);
+            this.background.Name="background";
+            this.background.Size=new Size(711, 489);
+            this.background.SizeMode=PictureBoxSizeMode.StretchImage;
+            this.background.TabIndex=10;
+            this.background.TabStop=false;
             // 
-            // pictureBox4
+            // discordButton
             // 
-            pictureBox4.BackColor = Color.Transparent;
-            pictureBox4.Cursor = Cursors.Hand;
-            pictureBox4.Image = Properties.Resources.discord;
-            pictureBox4.Location = new Point(362, 378);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(142, 50);
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox4.TabIndex = 13;
-            pictureBox4.TabStop = false;
-            pictureBox4.Click += pictureBox4_Click;
-            pictureBox4.MouseEnter += pictureBox4_Enter;
-            pictureBox4.MouseLeave += pictureBox4_Leave;
+            this.discordButton.BackColor=Color.Transparent;
+            this.discordButton.Cursor=Cursors.Hand;
+            this.discordButton.Image=Properties.Resources.discord;
+            this.discordButton.Location=new Point(362, 378);
+            this.discordButton.Name="discordButton";
+            this.discordButton.Size=new Size(142, 50);
+            this.discordButton.SizeMode=PictureBoxSizeMode.StretchImage;
+            this.discordButton.TabIndex=13;
+            this.discordButton.TabStop=false;
+            this.discordButton.Click+=this.DscordButton_Click;
+            this.discordButton.MouseEnter+=this.DiscordButton_Enter;
+            this.discordButton.MouseLeave+=this.DiscordButton_Leave;
             // 
-            // pictureBox5
+            // websiteButton
             // 
-            pictureBox5.BackColor = Color.Transparent;
-            pictureBox5.Cursor = Cursors.Hand;
-            pictureBox5.Image = Properties.Resources.website;
-            pictureBox5.Location = new Point(186, 378);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(142, 50);
-            pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox5.TabIndex = 14;
-            pictureBox5.TabStop = false;
-            pictureBox5.Click += pictureBox5_Click;
-            pictureBox5.MouseEnter += pictureBox5_Enter;
-            pictureBox5.MouseLeave += pictureBox5_Leave;
+            this.websiteButton.BackColor=Color.Transparent;
+            this.websiteButton.Cursor=Cursors.Hand;
+            this.websiteButton.Image=Properties.Resources.website;
+            this.websiteButton.Location=new Point(186, 378);
+            this.websiteButton.Name="websiteButton";
+            this.websiteButton.Size=new Size(142, 50);
+            this.websiteButton.SizeMode=PictureBoxSizeMode.StretchImage;
+            this.websiteButton.TabIndex=14;
+            this.websiteButton.TabStop=false;
+            this.websiteButton.Click+=this.WebsiteButton_Click;
+            this.websiteButton.MouseEnter+=this.WebsiteButton_Enter;
+            this.websiteButton.MouseLeave+=this.WebsiteButton_Leave;
             // 
-            // pictureBox2
+            // closeButton
             // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.Cursor = Cursors.Hand;
-            pictureBox2.Image = Properties.Resources.exit1;
-            pictureBox2.Location = new Point(659, 12);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(34, 33);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 16;
-            pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
-            pictureBox2.MouseEnter += pictureBox2_Enter;
-            pictureBox2.MouseLeave += pictureBox2_Leave;
+            this.closeButton.BackColor=Color.Transparent;
+            this.closeButton.Cursor=Cursors.Hand;
+            this.closeButton.Image=Properties.Resources.exit1;
+            this.closeButton.Location=new Point(668, 12);
+            this.closeButton.Name="closeButton";
+            this.closeButton.Size=new Size(25, 25);
+            this.closeButton.SizeMode=PictureBoxSizeMode.StretchImage;
+            this.closeButton.TabIndex=16;
+            this.closeButton.TabStop=false;
+            this.closeButton.Click+=this.CloseButton_Click;
+            this.closeButton.MouseEnter+=this.CloseButton_Enter;
+            this.closeButton.MouseLeave+=this.CloseButton_Leave;
             // 
-            // pictureBox3
+            // nextButton
             // 
-            pictureBox3.BackColor = Color.Transparent;
-            pictureBox3.Cursor = Cursors.Hand;
-            pictureBox3.Image = Properties.Resources.avancar1;
-            pictureBox3.Location = new Point(268, 284);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(157, 57);
-            pictureBox3.TabIndex = 17;
-            pictureBox3.TabStop = false;
-            pictureBox3.Click += pictureBox3_Click;
-            pictureBox3.MouseEnter += pictureBox3_Enter;
-            pictureBox3.MouseLeave += pictureBox3_Leave;
+            this.nextButton.BackColor=Color.Transparent;
+            this.nextButton.Cursor=Cursors.Hand;
+            this.nextButton.Image=Properties.Resources.avancar1;
+            this.nextButton.Location=new Point(268, 284);
+            this.nextButton.Name="nextButton";
+            this.nextButton.Size=new Size(157, 57);
+            this.nextButton.TabIndex=17;
+            this.nextButton.TabStop=false;
+            this.nextButton.Click+=this.NextButton_ClickAsync;
+            this.nextButton.MouseEnter+=this.NextButton_Enter;
+            this.nextButton.MouseLeave+=this.NextButton_Leave;
             // 
-            // textBox2
+            // installDirectoryTextBox
             // 
-            textBox2.BackColor = SystemColors.InactiveBorder;
-            textBox2.Location = new Point(78, 177);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(534, 23);
-            textBox2.TabIndex = 19;
-            textBox2.Text = "C:\\Games\\Ultima Online Imperial Age";
+            this.installDirectoryTextBox.BackColor=SystemColors.InactiveBorder;
+            this.installDirectoryTextBox.Location=new Point(78, 177);
+            this.installDirectoryTextBox.Name="installDirectoryTextBox";
+            this.installDirectoryTextBox.Size=new Size(534, 23);
+            this.installDirectoryTextBox.TabIndex=19;
+            this.installDirectoryTextBox.Text="C:\\Games\\Ultima Online Imperial Age";
             // 
-            // pictureBox6
+            // changeDirectoryButton
             // 
-            pictureBox6.BackColor = Color.Transparent;
-            pictureBox6.Image = Properties.Resources.alterar1;
-            pictureBox6.Location = new Point(78, 206);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(98, 23);
-            pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox6.TabIndex = 20;
-            pictureBox6.TabStop = false;
-            pictureBox6.MouseEnter += pictureBox6_Enter;
-            pictureBox6.MouseLeave += pictureBox6_Leave;
+            this.changeDirectoryButton.BackColor=Color.Transparent;
+            this.changeDirectoryButton.Image=Properties.Resources.alterar1;
+            this.changeDirectoryButton.Location=new Point(78, 206);
+            this.changeDirectoryButton.Name="changeDirectoryButton";
+            this.changeDirectoryButton.Size=new Size(98, 23);
+            this.changeDirectoryButton.SizeMode=PictureBoxSizeMode.StretchImage;
+            this.changeDirectoryButton.TabIndex=20;
+            this.changeDirectoryButton.TabStop=false;
+            this.changeDirectoryButton.Click+=this.ChangeDirectoryButton_Click;
+            this.changeDirectoryButton.MouseEnter+=this.ChangeDirectoryButton_Enter;
+            this.changeDirectoryButton.MouseLeave+=this.ChangeDirectoryButton_Leave;
             // 
-            // pictureBox7
+            // playButton
             // 
-            pictureBox7.BackColor = Color.Transparent;
-            pictureBox7.Cursor = Cursors.Hand;
-            pictureBox7.Image = Properties.Resources.jogar1;
-            pictureBox7.Location = new Point(268, 284);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(157, 57);
-            pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox7.TabIndex = 21;
-            pictureBox7.TabStop = false;
-            pictureBox7.Visible = false;
-            pictureBox7.MouseEnter += pictureBox7_Enter;
-            pictureBox7.MouseLeave += pictureBox7_Leave;
+            this.playButton.BackColor=Color.Transparent;
+            this.playButton.Cursor=Cursors.Hand;
+            this.playButton.Image=Properties.Resources.jogar1;
+            this.playButton.Location=new Point(268, 284);
+            this.playButton.Name="playButton";
+            this.playButton.Size=new Size(157, 57);
+            this.playButton.SizeMode=PictureBoxSizeMode.StretchImage;
+            this.playButton.TabIndex=21;
+            this.playButton.TabStop=false;
+            this.playButton.Visible=false;
+            this.playButton.MouseEnter+=this.PlayButton_Enter;
+            this.playButton.MouseLeave+=this.PlayButton_Leave;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(705, 482);
-            ControlBox = false;
-            Controls.Add(pictureBox7);
-            Controls.Add(pictureBox6);
-            Controls.Add(textBox2);
-            Controls.Add(label1);
-            Controls.Add(pictureBox3);
-            Controls.Add(pictureBox2);
-            Controls.Add(pictureBox4);
-            Controls.Add(pictureBox5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(progressBar1);
-            Controls.Add(pictureBox1);
-            MaximizeBox = false;
-            MinimizeBox = false;
-            Name = "Form1";
-            Text = "Form1";
-            Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions=new SizeF(7F, 15F);
+            this.AutoScaleMode=AutoScaleMode.Font;
+            this.AutoSizeMode=AutoSizeMode.GrowAndShrink;
+            this.ClientSize=new Size(705, 482);
+            this.ControlBox=false;
+            this.Controls.Add(this.nextButton);
+            this.Controls.Add(this.playButton);
+            this.Controls.Add(this.changeDirectoryButton);
+            this.Controls.Add(this.installDirectoryTextBox);
+            this.Controls.Add(this.installDirectoryLabel);
+            this.Controls.Add(this.closeButton);
+            this.Controls.Add(this.discordButton);
+            this.Controls.Add(this.websiteButton);
+            this.Controls.Add(this.installationStatusLabel);
+            this.Controls.Add(this.installationCompleteNoticeLabel);
+            this.Controls.Add(this.progressBar);
+            this.Controls.Add(this.background);
+            this.MaximizeBox=false;
+            this.MinimizeBox=false;
+            this.Name="Form1";
+            this.Text="Form1";
+            this.Load+=this.Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)this.background).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.discordButton).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.websiteButton).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.closeButton).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.nextButton).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.changeDirectoryButton).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.playButton).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
-        private ProgressBar progressBar1;
-        private Label label3;
-        private Label label4;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox5;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox3;
-        private TextBox textBox2;
-        private PictureBox pictureBox6;
-        private PictureBox pictureBox7;
+        private Label installDirectoryLabel;
+        private ProgressBar progressBar;
+        private Label installationCompleteNoticeLabel;
+        private Label installationStatusLabel;
+        private PictureBox background;
+        private PictureBox discordButton;
+        private PictureBox websiteButton;
+        private PictureBox closeButton;
+        private PictureBox nextButton;
+        private TextBox installDirectoryTextBox;
+        private PictureBox changeDirectoryButton;
+        private PictureBox playButton;
     }
 }
