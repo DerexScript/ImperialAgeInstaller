@@ -78,23 +78,23 @@ public partial class Form1 : Form {
         background.Visible=true;
         nextButton.Visible=false;
         changeDirectoryButton.Visible=false;
-        string zipUrl = "https://drive.usercontent.google.com/download?id=1xorUs-cu918kfx1Lg15b-YTh6eOVgeqe&export=download&authuser=0&confirm=t&uuid=acae8fba-8a8b-4e98-958e-7e1aba89a9d0&at=AN_67v3isA9Bqx__n6Etr2MkNDA6%3A1729975619966";
+        // string zipUrl = "https://drive.usercontent.google.com/download?id=1xorUs-cu918kfx1Lg15b-YTh6eOVgeqe&export=download&authuser=0&confirm=t&uuid=53b88648-57cd-4b85-8712-9b815e8c6907&at=AN_67v1SFkvd_NZtr_t0JT1gsG8M%3A1730051928633";
+        // string zipUrl = "https://ftp.imperialageshard.com.br/files/Ultima%20Online%20Imperial%20Age.zip";
+        string zipUrl = "https://imperialage.juvhost.com/files/Ultima%20Online%20Imperial%20Age.zip";
         string downloadDirectory = installDirectoryTextBox.Text;
         string zipFilePath = Path.Combine(downloadDirectory, "ImperialAge.zip");
-        if(!Directory.Exists(downloadDirectory)) {
-            Directory.CreateDirectory(downloadDirectory);
-        }
         try {
-            await Utility.DownloadFileAsync(zipUrl, zipFilePath, progressBar);
+            await Utility.DownloadFileAsync(zipUrl, zipFilePath, progressBar, downloadDirectory);
             installationStatusLabel.Visible=false;
             installationStatusLabel.Text="Extraindo...";
             installationStatusLabel.Visible=true;
-            await Task.Delay(2000);
-            Utility.ExtractZipFile(zipFilePath, downloadDirectory);
-            File.Delete(zipFilePath);
+            //await Task.Delay(2000);
+            //await Utility.ExtractZipFileAsync(zipFilePath, downloadDirectory);
+            await Utility.ExtractZipWithProgressAsync(zipFilePath, downloadDirectory, progressBar);
         } catch(Exception ex) {
             MessageBox.Show($"Ocorreu um erro: {ex.Message}");
         } finally {
+            await Task.Run(() => File.Delete(zipFilePath));
             Utility.HideComponents(this.Controls);
             installationCompleteNoticeLabel.Visible=true;
             installationStatusLabel.Visible=false;
@@ -102,7 +102,8 @@ public partial class Form1 : Form {
             discordButton.Visible=true;
             background.Visible=true;
             playButton.Visible=true;
-            Utility.EnsureLauncherSettings(this.installDirectoryTextBox.Text);
+            await Utility.EnsureLauncherSettings(this.installDirectoryTextBox.Text);
+            await Utility.CreateShortcut(downloadDirectory);
         }
     }
 
