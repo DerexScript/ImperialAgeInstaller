@@ -101,9 +101,9 @@ public partial class Form1 : Form {
             websiteButton.Visible=true;
             discordButton.Visible=true;
             background.Visible=true;
-            playButton.Visible=true;
             await Utility.EnsureLauncherSettings(this.installDirectoryTextBox.Text);
             await Utility.CreateShortcut(downloadDirectory);
+            playButton.Visible=true;
         }
     }
 
@@ -173,4 +173,7 @@ public partial class Form1 : Form {
         playButton.SizeMode=PictureBoxSizeMode.StretchImage;
     }
 
+    private void PlayButton_Click(object sender, EventArgs e) {
+        Utility.RunClassicUO(playButton, this, installDirectoryTextBox);
+    }
 }

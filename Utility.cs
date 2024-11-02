@@ -107,6 +107,37 @@ internal static class Utility {
                     foreach(var profile in profiles.Elements("profile")) {
                         if(((string?)profile.Attribute("server")??"")=="190.2.72.35") {
                             profileExists=true;
+
+                            // Verifica se os plugins estão configurados corretamente
+                            var pluginsElement = profile.Element("plugins");
+                            if(pluginsElement==null) {
+                                // Se não existir o elemento "plugins", cria e adiciona
+                                pluginsElement=new XElement("plugins");
+                                profile.Add(pluginsElement);
+                            }
+
+                            // Verifica se os plugins "ClassicAssist.dll" e "Razor.exe" estão presentes
+                            bool classicAssistExists = pluginsElement.Elements("plugin")
+                                .Any(p => (string?)p.Attribute("path")=="ClassicAssist\\ClassicAssist.dll"&&
+                                          (string?)p.Attribute("enabled")=="True");
+
+                            bool razorExists = pluginsElement.Elements("plugin")
+                                .Any(p => (string?)p.Attribute("path")=="Razor\\Razor.exe"&&
+                                          (string?)p.Attribute("enabled")=="True");
+
+                            // Adiciona ou corrige os plugins se necessário
+                            if(!classicAssistExists) {
+                                pluginsElement.Add(new XElement("plugin",
+                                    new XAttribute("path", "ClassicAssist\\ClassicAssist.dll"),
+                                    new XAttribute("enabled", "True")));
+                            }
+
+                            if(!razorExists) {
+                                pluginsElement.Add(new XElement("plugin",
+                                    new XAttribute("path", "Razor\\Razor.exe"),
+                                    new XAttribute("enabled", "True")));
+                            }
+
                             break;
                         }
                     }
@@ -115,8 +146,10 @@ internal static class Utility {
                         // Adiciona o novo profile se não existir
                         var newProfile = CreateProfileElement(installDirectoryTextBoxText);
                         profiles.Add(newProfile);
-                        settingsXml.Save(settingsFilePath);
                     }
+
+                    // Salva as mudanças no arquivo XML
+                    settingsXml.Save(settingsFilePath);
                 }
             }
         });
@@ -227,8 +260,8 @@ internal static class Utility {
     public static async Task CreateShortcut(string installDirectoryTextBoxText) {
         await Task.Run(() => {
             try {
-                string targetPath = Path.Combine(installDirectoryTextBoxText, "ClassicUOLauncher.exe");
-                string shortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "ClassicUOLauncher.lnk");
+                string targetPath = Path.Combine(installDirectoryTextBoxText, "ImperialAgeLauncher.exe");
+                string shortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "ImperialAgeLauncher.lnk");
 
                 // Inicializa a instância do Windows Script Host para criar o atalho
                 WshShell shell = new WshShell();
@@ -257,5 +290,71 @@ internal static class Utility {
             }
         });
     }
+
+    public static void RunClassicUO(PictureBox playButton, Form mainForm, TextBox installDirectoryTextBox) {
+        try {
+            // Desativa o botão de jogo
+            playButton.Enabled=false;
+
+            // Minimiza o formulário principal
+            mainForm.WindowState=FormWindowState.Minimized;
+
+            // Obtém o diretório do Ultima Online a partir do TextBox
+            string installDirectory = installDirectoryTextBox.Text;
+
+            // Verifica se o diretório está vazio ou inválido
+            if(string.IsNullOrWhiteSpace(installDirectory)||!Directory.Exists(installDirectory)) {
+                MessageBox.Show("O diretório de instalação é inválido ou não existe.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                playButton.Enabled=true; // Reativa o botão
+                mainForm.WindowState=FormWindowState.Normal; // Restaura a janela principal
+                return;
+            }
+
+            // Caminho completo para ClassicUO.exe
+            string classicUOPath = Path.Combine(installDirectory, "ClassicUO", "ClassicUO.exe");
+
+            // Verifica se o arquivo existe
+            if(!System.IO.File.Exists(classicUOPath)) {
+                MessageBox.Show("O arquivo ClassicUO.exe não foi encontrado no diretório esperado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                playButton.Enabled=true; // Reativa o botão
+                mainForm.WindowState=FormWindowState.Normal; // Restaura a janela principal
+                return;
+            }
+
+            // Configura os argumentos
+            string arguments = "-plugin \"Data\\Plugins\\Razor\\Razor.exe\" "+
+                               "-plugin \"Data\\Plugins\\ClassicAssist\\ClassicAssist.dll\" "+
+                               "-ip \"190.2.72.35\" -port \"2593\"";
+
+            // Configura o processo
+            var processStartInfo = new ProcessStartInfo {
+                FileName=classicUOPath,
+                Arguments=arguments,
+                WorkingDirectory=Path.GetDirectoryName(classicUOPath)??installDirectory, // Define o diretório de trabalho
+                UseShellExecute=false, // Não usa o shell do sistema para executar o processo
+                CreateNoWindow=true // Não cria uma janela do console
+            };
+
+            // Inicia o processo
+            using var process = new Process { StartInfo=processStartInfo };
+            if(process.Start()) {
+                // Aguarda o processo iniciar completamente, se necessário
+                process.WaitForInputIdle();
+
+                playButton.Enabled=true; // Reativa o botão após o jogo abrir
+                Application.Exit();
+            } else {
+                MessageBox.Show("Falha ao iniciar o ClassicUO.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                playButton.Enabled=true; // Reativa o botão
+                mainForm.WindowState=FormWindowState.Normal; // Restaura a janela principal
+            }
+        } catch(Exception ex) {
+            // Log do erro e exibição de uma mensagem para o usuário
+            MessageBox.Show($"Ocorreu um erro ao tentar executar o ClassicUO: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            playButton.Enabled=true; // Reativa o botão
+            mainForm.WindowState=FormWindowState.Normal; // Restaura a janela principal
+        }
+    }
+
 }
 

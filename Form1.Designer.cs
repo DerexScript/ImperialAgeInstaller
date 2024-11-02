@@ -199,6 +199,7 @@
             this.playButton.TabIndex=21;
             this.playButton.TabStop=false;
             this.playButton.Visible=false;
+            this.playButton.Click+=this.PlayButton_Click;
             this.playButton.MouseEnter+=this.PlayButton_Enter;
             this.playButton.MouseLeave+=this.PlayButton_Leave;
             // 
@@ -221,10 +222,11 @@
             this.Controls.Add(this.installationCompleteNoticeLabel);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.background);
+            this.Icon=(Icon)resources.GetObject("$this.Icon");
             this.MaximizeBox=false;
             this.MinimizeBox=false;
             this.Name="Form1";
-            this.Text="Form1";
+            this.Text="Imperial Age Installer";
             this.Load+=this.Form1_Load;
             ((System.ComponentModel.ISupportInitialize)this.background).EndInit();
             ((System.ComponentModel.ISupportInitialize)this.discordButton).EndInit();
