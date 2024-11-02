@@ -105,7 +105,14 @@ internal static class Utility {
 
                 if(profiles!=null) {
                     foreach(var profile in profiles.Elements("profile")) {
-                        if(((string?)profile.Attribute("server")??"")=="190.2.72.35") {
+
+                        string serverAttribute = (string?)profile.Attribute("server")??"";
+                        if(serverAttribute=="190.2.72.35") {
+                            profile.SetAttributeValue("server", "login.imperialage.com.br");
+                            serverAttribute="login.imperialage.com.br"; // Atualiza o valor para a próxima verificação
+                        }
+
+                        if(serverAttribute=="login.imperialage.com.br") {
                             profileExists=true;
 
                             // Verifica se os plugins estão configurados corretamente
@@ -117,20 +124,20 @@ internal static class Utility {
                             }
 
                             // Verifica se os plugins "ClassicAssist.dll" e "Razor.exe" estão presentes
-                            bool classicAssistExists = pluginsElement.Elements("plugin")
-                                .Any(p => (string?)p.Attribute("path")=="ClassicAssist\\ClassicAssist.dll"&&
-                                          (string?)p.Attribute("enabled")=="True");
+                            //bool classicAssistExists = pluginsElement.Elements("plugin")
+                            //    .Any(p => (string?)p.Attribute("path")=="ClassicAssist\\ClassicAssist.dll"&&
+                            //              (string?)p.Attribute("enabled")=="True");
 
                             bool razorExists = pluginsElement.Elements("plugin")
                                 .Any(p => (string?)p.Attribute("path")=="Razor\\Razor.exe"&&
                                           (string?)p.Attribute("enabled")=="True");
 
                             // Adiciona ou corrige os plugins se necessário
-                            if(!classicAssistExists) {
-                                pluginsElement.Add(new XElement("plugin",
-                                    new XAttribute("path", "ClassicAssist\\ClassicAssist.dll"),
-                                    new XAttribute("enabled", "True")));
-                            }
+                            //if(!classicAssistExists) {
+                            //    pluginsElement.Add(new XElement("plugin",
+                            //        new XAttribute("path", "ClassicAssist\\ClassicAssist.dll"),
+                            //        new XAttribute("enabled", "True")));
+                            //}
 
                             if(!razorExists) {
                                 pluginsElement.Add(new XElement("plugin",
@@ -205,11 +212,11 @@ internal static class Utility {
                 new XElement("plugin",
                     new XAttribute("path", "Razor\\Razor.exe"),
                     new XAttribute("enabled", "True")
-                ),
+                )/*,
                 new XElement("plugin",
                     new XAttribute("path", "ClassicAssist\\ClassicAssist.dll"),
                     new XAttribute("enabled", "True")
-                )
+                )*/
             )
         );
     }
@@ -291,7 +298,7 @@ internal static class Utility {
         });
     }
 
-    public static void RunClassicUO(PictureBox playButton, Form mainForm, TextBox installDirectoryTextBox) {
+    public static void RunImperialAgeLauncher(PictureBox playButton, Form mainForm, TextBox installDirectoryTextBox) {
         try {
             // Desativa o botão de jogo
             playButton.Enabled=false;
@@ -310,27 +317,25 @@ internal static class Utility {
                 return;
             }
 
-            // Caminho completo para ClassicUO.exe
-            string classicUOPath = Path.Combine(installDirectory, "ClassicUO", "ClassicUO.exe");
+            // Caminho completo para ImperialAgeLauncher.exe
+            string launcherPath = Path.Combine(installDirectory, "ImperialAgeLauncher.exe");
 
             // Verifica se o arquivo existe
-            if(!System.IO.File.Exists(classicUOPath)) {
-                MessageBox.Show("O arquivo ClassicUO.exe não foi encontrado no diretório esperado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if(!System.IO.File.Exists(launcherPath)) {
+                MessageBox.Show("O arquivo ImperialAgeLauncher.exe não foi encontrado no diretório esperado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 playButton.Enabled=true; // Reativa o botão
                 mainForm.WindowState=FormWindowState.Normal; // Restaura a janela principal
                 return;
             }
 
-            // Configura os argumentos
-            string arguments = "-plugin \"Data\\Plugins\\Razor\\Razor.exe\" "+
-                               "-plugin \"Data\\Plugins\\ClassicAssist\\ClassicAssist.dll\" "+
-                               "-ip \"190.2.72.35\" -port \"2593\"";
+            // Configura os argumentos (se precisar de argumentos adicionais, adicione aqui)
+            string arguments = "";
 
             // Configura o processo
             var processStartInfo = new ProcessStartInfo {
-                FileName=classicUOPath,
+                FileName=launcherPath,
                 Arguments=arguments,
-                WorkingDirectory=Path.GetDirectoryName(classicUOPath)??installDirectory, // Define o diretório de trabalho
+                WorkingDirectory=Path.GetDirectoryName(launcherPath)??installDirectory, // Define o diretório de trabalho
                 UseShellExecute=false, // Não usa o shell do sistema para executar o processo
                 CreateNoWindow=true // Não cria uma janela do console
             };
@@ -341,20 +346,21 @@ internal static class Utility {
                 // Aguarda o processo iniciar completamente, se necessário
                 process.WaitForInputIdle();
 
-                playButton.Enabled=true; // Reativa o botão após o jogo abrir
+                playButton.Enabled=true; // Reativa o botão após o Launcher abrir
                 Application.Exit();
             } else {
-                MessageBox.Show("Falha ao iniciar o ClassicUO.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao iniciar o ImperialAgeLauncher.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 playButton.Enabled=true; // Reativa o botão
                 mainForm.WindowState=FormWindowState.Normal; // Restaura a janela principal
             }
         } catch(Exception ex) {
             // Log do erro e exibição de uma mensagem para o usuário
-            MessageBox.Show($"Ocorreu um erro ao tentar executar o ClassicUO: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"Ocorreu um erro ao tentar executar o ImperialAgeLauncher: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             playButton.Enabled=true; // Reativa o botão
             mainForm.WindowState=FormWindowState.Normal; // Restaura a janela principal
         }
     }
+
 
 }
 

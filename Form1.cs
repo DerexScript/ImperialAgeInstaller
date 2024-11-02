@@ -80,7 +80,7 @@ public partial class Form1 : Form {
         changeDirectoryButton.Visible=false;
         // string zipUrl = "https://drive.usercontent.google.com/download?id=1xorUs-cu918kfx1Lg15b-YTh6eOVgeqe&export=download&authuser=0&confirm=t&uuid=53b88648-57cd-4b85-8712-9b815e8c6907&at=AN_67v1SFkvd_NZtr_t0JT1gsG8M%3A1730051928633";
         // string zipUrl = "https://ftp.imperialageshard.com.br/files/Ultima%20Online%20Imperial%20Age.zip";
-        string zipUrl = "https://imperialage.juvhost.com/files/Ultima%20Online%20Imperial%20Age.zip";
+        string zipUrl = "https://imperialageshard.com.br/files/Ultima%20Online%20Imperial%20Age.zip";
         string downloadDirectory = installDirectoryTextBox.Text;
         string zipFilePath = Path.Combine(downloadDirectory, "ImperialAge.zip");
         try {
@@ -174,6 +174,6 @@ public partial class Form1 : Form {
     }
 
     private void PlayButton_Click(object sender, EventArgs e) {
-        Utility.RunClassicUO(playButton, this, installDirectoryTextBox);
+        Utility.RunImperialAgeLauncher(playButton, this, installDirectoryTextBox);
     }
 }
